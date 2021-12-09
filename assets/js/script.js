@@ -2,13 +2,18 @@
 // Reference the paragraph that holds the current date and time
 var todayEl = document.getElementById('currentDay');
 
-// Reference the whole task and buttons
+// Reference the whole task (time and textarea)
 var timeBlockEl = document.getElementById('time-block');
-var editBtnEl = document.getElementById('edit-button');
-var deleteBtnEl = document.getElementById('delete-button');
 
-// Reference to just the task (not the time)
-var task = document.getElementById('task')
+// Reference the save icon
+var addBtnEl = document.getElementById('save-button');
+
+// Array that stores the todo's
+var toDoArr = [];
+
+// Reference to just the task (not the time (textarea))
+var task = document.getElementById('task');
+
 
 // REFERENCES
 // Access moments.js and format it to say the current day of the week, date, and time
@@ -17,17 +22,22 @@ var rightNow = moment().format('LLLL');
 todayEl.innerHTML = rightNow;
 
 // FUNCTIONS
-// Edit task function
-var editTask = function() {
-
+var setStorage = function() {
+   toDoArr.push(JSON.parse(localStorage.getItem('toDoArr')));
+   localStorage.setItem('task', JSON.stringify(toDoArr));
 }
 
-var deleteTask = function() {
+// Check due dates
+var auditTasks = function auditTask() {
 
 };
 
+
 // EVENT LISTENERS
-// Capture edit button click
-deleteBtnEl.addEventListener('click', deleteTask);
+// Capture add button click
+addBtnEl.addEventListener('click', setStorage);
 
-
+// Use setTimeout to update every minute
+setTimeout(function() {
+    location = '';
+}, 1000*60);
