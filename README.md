@@ -1,2 +1,2 @@
-# work-scheduler
-Created a workday scheduler
+# Work Day Scheduler
+
